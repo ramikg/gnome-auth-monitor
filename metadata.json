@@ -1,0 +1,9 @@
+{
+    "name": "Auth Monitor",
+    "description": "Manage SSO authentication sessions from the top bar",
+    "uuid": "auth-monitor@ramikg",
+    "url": "https://github.com/ramikg/gnome-auth-monitor",
+    "donations": {"github": "ramikg"},
+    "shell-version": ["46", "47", "48", "49", "50", "51"],
+    "version-name": "0.0.1"
+}

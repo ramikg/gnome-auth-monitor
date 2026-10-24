@@ -1,0 +1,104 @@
+/*
+ * Colors for the Auth Monitor indicator. GNOME Shell loads this file
+ * automatically from the extension's root directory.
+ *
+ * State palette:
+ *   active   #10b981 (green)
+ *   warning  #f59e0b (amber)
+ *   inactive #ef4444 (red)
+ */
+
+/* Top-bar icon tint. No class (theme foreground) when nothing is valid. */
+.auth-monitor-icon-active {
+    color: #10b981;
+}
+
+.auth-monitor-icon-warning {
+    color: #f59e0b;
+}
+
+/* Status circle: a translucent halo around a solid dot. */
+.auth-monitor-status-halo {
+    border-radius: 999px;
+    margin-right: 10px;
+}
+
+.auth-monitor-status-halo-active {
+    background-color: rgba(16, 185, 129, 0.22);
+}
+
+.auth-monitor-status-halo-warning {
+    background-color: rgba(245, 158, 11, 0.2);
+}
+
+.auth-monitor-status-halo-inactive {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+.auth-monitor-status-dot {
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.auth-monitor-status-dot-active {
+    background-color: #10b981;
+}
+
+.auth-monitor-status-dot-warning {
+    background-color: #f59e0b;
+}
+
+.auth-monitor-status-dot-inactive {
+    background-color: #ef4444;
+}
+
+/*
+ * Countdown labels ("42m left"). A still-valid countdown sets no color so it
+ * inherits the theme foreground (the code dims it via opacity); an expired
+ * countdown gets a semantic color readable on light and dark menus.
+ */
+.auth-monitor-expiry {
+    font-size: 0.9em;
+}
+
+.auth-monitor-expiry-expired {
+    color: #ef4444;
+}
+
+/*
+ * Secondary menu text: the session name, token/profile captions, and the dot
+ * separator. Typography and spacing only – these are dimmed from the code via
+ * actor opacity, which St CSS has no property for.
+ */
+.auth-monitor-session-name {
+    font-weight: 500;
+}
+
+.auth-monitor-caption {
+    font-size: 0.9em;
+}
+
+/* Token-expiry row: indent under the session name, and the dot's side gaps. */
+.auth-monitor-token-row {
+    margin-left: 28px;
+}
+
+.auth-monitor-token-separator {
+    margin: 0 8px;
+}
+
+/*
+ * Login button. Constant horizontal padding widens the button (and thus the
+ * hover tint) sideways around the icon without touching its height, so the row
+ * keeps its size; only the background changes on hover. Compound selectors
+ * outrank the theme's own .system-menu-action rules.
+ */
+.system-menu-action.auth-monitor-login-button {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.system-menu-action.auth-monitor-login-button:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+}

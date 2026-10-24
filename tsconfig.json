@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "sourceMap": false,
+        "strict": true,
+        "skipLibCheck": true,
+        "target": "ES2023",
+        "lib": ["ES2023"]
+    },
+    "include": ["src/ambient.d.ts", "src/types.d.ts"],
+    "files": ["src/extension.ts", "src/utils.ts", "src/providers/aws.ts"]
+}

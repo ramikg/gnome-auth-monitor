@@ -1,0 +1,44 @@
+name: Build
+
+on:
+    push:
+        branches:
+            - '*'
+        tags:
+            - 'v[0-9]+.[0-9]+.[0-9]+'
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+            - name: Install npm dependencies
+              run: npm ci
+            - name: Format
+              run: npm run format
+            - name: Lint
+              run: npm run lint
+            - name: Build
+              run: make pack
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: build_artifacts
+                  path: auth-monitor@ramikg.zip
+
+    release:
+        needs: build
+        runs-on: ubuntu-latest
+        if: startsWith(github.ref, 'refs/tags/')
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/download-artifact@v4
+              with:
+                  name: build_artifacts
+            - name: Create GitHub Release
+              run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" auth-monitor@ramikg.zip
+              env:
+                  GH_TOKEN: ${{ github.token }}
